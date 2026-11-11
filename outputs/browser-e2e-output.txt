@@ -1,0 +1,1 @@
+PASS: browser reconnected and caught up to server_seq=3; database snapshot has 3 events

@@ -1,0 +1,65 @@
+ Container allowed-we-use-them-too-note-test-db-1 Running 
+ Image allowed-we-use-them-too-note-tests Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 652B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 360B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 1.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 90B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 594B done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+#6 resolve docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b done
+#6 DONE 0.0s
+
+#7 [2/8] WORKDIR /app
+#7 CACHED
+
+#8 [3/8] COPY requirements.txt .
+#8 CACHED
+
+#9 [5/8] COPY app ./app
+#9 CACHED
+
+#10 [6/8] COPY tests ./tests
+#10 CACHED
+
+#11 [4/8] RUN pip install --no-cache-dir -r requirements.txt
+#11 CACHED
+
+#12 [7/8] COPY scripts ./scripts
+#12 CACHED
+
+#13 [8/8] COPY pytest.ini .
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers 0.0s done
+#14 exporting manifest sha256:d6ec019cf6ad7f192a2a9f9250f649e453f5c26613ae9a6df8d035f2e1d05043 done
+#14 exporting config sha256:4ce709d869d79ff110d88a48dd0f86cada389c735203022126781d6c5332c50f done
+#14 exporting attestation manifest sha256:464092a9bbcd646366c5704dc499c9ea82ada5cc777dce1ea363a201e09c88e8 done
+#14 exporting manifest list sha256:b12a04e7617dfeeb246caaef5f27f650d27a7499451e6c13985f9f9a06b98976 done
+#14 naming to docker.io/library/allowed-we-use-them-too-note-tests:latest done
+#14 unpacking to docker.io/library/allowed-we-use-them-too-note-tests:latest done
+#14 DONE 0.0s
+
+#15 resolving provenance for metadata file
+#15 DONE 0.0s
+ Image allowed-we-use-them-too-note-tests Built 
+ Container allowed-we-use-them-too-note-test-db-1 Waiting 
+ Container allowed-we-use-them-too-note-test-db-1 Healthy 
+ Container allowed-we-use-them-too-note-tests-run-d1abcae7224f Creating 
+ Container allowed-we-use-them-too-note-tests-run-d1abcae7224f Created 
+......                                                                   [100%]
+6 passed in 0.45s

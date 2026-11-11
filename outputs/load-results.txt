@@ -1,0 +1,6 @@
+runs=50 rate_per_run=10/s duration=10s
+target_events=5000 accepted_http=5000 failures=0
+concurrent_sse_readers=50 sse_events=5000
+request_latency_ms median=45.6 p95=57.9 max=84.4
+database_snapshot_mismatches=0
+PASS: all accepted events match the persisted run snapshots
