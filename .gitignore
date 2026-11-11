@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+work/
+.DS_Store
+outputs/soup-tracker-submission.zip
+outputs/soup-tracker-submission/
