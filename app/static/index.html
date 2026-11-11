@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <title>Soup — трекер экспериментов</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Soup — главная"><span class="brand-mark">s</span> soup</a>
+      <div id="connection" class="connection"><span class="dot"></span><span>Не подключено</span></div>
+    </header>
+
+    <main class="layout">
+      <section id="setup" class="setup-panel hidden">
+        <div class="eyebrow">МИНИ-ТРЕКЕР ЭКСПЕРИМЕНТОВ</div>
+        <h1>Создайте проект</h1>
+        <p class="intro">Проект хранит запуски и метрики. Для отправки данных сервер выдаст API-ключ.</p>
+        <form id="project-form" class="form-row">
+          <label class="field grow"><span>Название проекта</span><input id="project-name" required maxlength="120" placeholder="Например, классификатор изображений" /></label>
+          <button class="button primary" type="submit">Создать проект</button>
+        </form>
+        <p id="setup-error" class="error hidden"></p>
+        <div class="divider"><span>ИЛИ</span></div>
+        <form id="key-login-form" class="form-row">
+          <label class="field grow"><span>Уже есть API-ключ?</span><input id="existing-key" autocomplete="off" placeholder="soup_…" /></label>
+          <button class="button secondary" type="submit">Открыть проект</button>
+        </form>
+      </section>
+
+      <section id="app" class="app-shell hidden">
+        <aside class="sidebar">
+          <div class="project-label">ТЕКУЩИЙ ПРОЕКТ</div>
+          <h2 id="project-title" class="project-title">—</h2>
+          <div class="sidebar-actions">
+            <button id="show-key" class="button quiet" type="button">Показать API-ключ</button>
+            <button id="rotate-key" class="button quiet" type="button">Обновить API-ключ</button>
+            <button id="forget-key" class="button quiet" type="button">Сменить проект</button>
+          </div>
+          <div id="key-panel" class="key-panel hidden"><label for="key-value">API-ключ проекта</label><div class="key-row"><input id="key-value" readonly /><button id="copy-key" class="button quiet" type="button">Копировать</button></div></div>
+          <div class="sidebar-note">Ключ хранится в этом браузере. Старый ключ перестанет работать после обновления.</div>
+        </aside>
+
+        <section class="content">
+          <div id="runs-view">
+            <div class="page-heading">
+              <div><div class="eyebrow">ЭКСПЕРИМЕНТЫ</div><h1>Запуски</h1></div>
+              <button id="new-run" class="button primary" type="button">＋ Новый запуск</button>
+            </div>
+            <form id="run-form" class="inline-form hidden">
+              <label class="field grow"><span>Название запуска</span><input id="run-name" required maxlength="160" placeholder="Например, обучение v1" /></label>
+              <button class="button primary" type="submit">Создать</button>
+              <button id="cancel-run" class="button quiet" type="button">Отмена</button>
+            </form>
+            <p id="runs-error" class="error hidden"></p>
+            <div id="empty-runs" class="empty-state hidden"><div class="empty-icon">↗</div><h2>Пока нет запусков</h2><p>Создайте запуск, затем отправляйте в него метрики.</p></div>
+            <div id="runs-list" class="runs-list"></div>
+          </div>
+
+          <div id="detail-view" class="hidden">
+            <button id="back-runs" class="back-link" type="button">← Все запуски</button>
+            <div class="page-heading run-heading"><div><div class="eyebrow">ЗАПУСК</div><h1 id="run-title">—</h1></div><span id="stream-status" class="live-badge"><i></i> Подключение…</span></div>
+            <div class="metrics-summary"><div><span>События в потоке</span><strong id="event-count">0</strong></div><div><span>Последний server_seq</span><strong id="cursor-value">0</strong></div></div>
+            <div class="section-heading"><div><h2>Метрики</h2><p>Новые события появляются после сохранения в базе.</p></div><button id="send-demo" class="button secondary" type="button">Отправить тестовую метрику</button></div>
+            <p id="detail-error" class="error hidden"></p>
+            <div id="empty-metrics" class="empty-state compact"><h2>Ожидаем метрики</h2><p>Отправьте событие через API или нажмите кнопку тестовой метрики.</p></div>
+            <div id="metrics-wrap" class="table-wrap hidden"><table><thead><tr><th>№</th><th>Метрика</th><th>Значение</th><th>Время клиента</th><th>Принято сервером</th></tr></thead><tbody id="metrics-body"></tbody></table></div>
+            <div class="api-example"><div class="api-example-heading"><div><div class="eyebrow">ПРИМЕР ОТПРАВКИ</div><h2>Из программы эксперимента</h2></div><button id="copy-example" class="button quiet" type="button">Скопировать</button></div><pre id="curl-example"></pre></div>
+          </div>
+        </section>
+      </section>
+
+      <div id="notice" class="notice hidden" role="status"></div>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
